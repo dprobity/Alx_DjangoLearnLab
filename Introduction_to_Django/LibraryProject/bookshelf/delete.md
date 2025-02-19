@@ -1,10 +1,9 @@
-# Update the book title and save changes
-retrieved_book.title = "Nineteen Eighty-Four"
-retrieved_book.save()
+# Delete the book instance
+retrieved_book.delete()
 
-# Verify update
-updated_book = Book.objects.get(id=retrieved_book.id)
-print(f"Updated Title: {updated_book.title}")
+# Confirm deletion
+books = Book.objects.all()
+print(list(books))
 
 # Expected Output
 
