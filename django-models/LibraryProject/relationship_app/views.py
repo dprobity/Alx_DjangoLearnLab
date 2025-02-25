@@ -10,7 +10,7 @@ from .models import Library
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.Post)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             # Log the user in after registration

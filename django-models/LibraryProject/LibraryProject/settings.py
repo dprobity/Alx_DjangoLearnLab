@@ -130,3 +130,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Redirect users to this URL after login
+LOGIN_REDIRECT_URL = '/relationship_app/books/'  # Change to your desired page
+LOGIN_REDIRECT_URL = '/relationship_app/books/'  # Or any valid URL in your app
+LOGOUT_REDIRECT_URL = '/relationship_app/login/'  # Redirect after logout
+
+
