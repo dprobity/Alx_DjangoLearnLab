@@ -1,9 +1,25 @@
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.detail import DetailView
 from .models import Book
 from .models import Library
 # Create your views here.
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.Post)
+        if form.is_valid():
+            user = form.save()
+            # Log the user in after registration
+            login(request,user)
+            return redirect('list_books') # Redirect to an appropriate page
+    else:
+        form = UserCreationForm()
+        return render(request, 'registration/register.html', {'form': form})
+        
 
 
 # Function-based view to list all books with their authors
