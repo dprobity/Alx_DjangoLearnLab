@@ -7,6 +7,27 @@ from .models import Book
 from .models import Library
 # Create your views here.
 
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .decorators import user_is_admin, user_is_librarian, user_is_member
+
+# ✅ Admin View
+@login_required
+@user_passes_test(user_is_admin)
+def admin_view(request):
+    return render(request, 'admin_view.html')
+
+# ✅ Librarian View
+@login_required
+@user_passes_test(user_is_librarian)
+def librarian_view(request):
+    return render(request, 'librarian_view.html')
+
+# ✅ Member View
+@login_required
+@user_passes_test(user_is_member)
+def member_view(request):
+    return render(request, 'member_view.html')
+
 
 def register(request):
     if request.method == 'POST':

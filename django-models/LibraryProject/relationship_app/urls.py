@@ -1,15 +1,16 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views  
-from .views import register,  list_books, LibraryDetailView
+# from .views import register,  list_books, LibraryDetailView, admin_view, librarian_view, member_view
+from . import views
 
 
 urlpatterns = [
     # Route for the function-based view listing all books
-    path('books/', list_books, name='list_books'),
+    path('books/', views.list_books, name='list_books'),
     
     # Route for the class-based view to display a specific library's details.
     # Here, <int:pk> is used to pass the primary key of the Library.
-    path('library/<int:pk>/', LibraryDetailView.as_view(), name='library_detail'),
+    path('library/<int:pk>/', views.LibraryDetailView.as_view(), name='library_detail'),
      # Authentication URLs using Django's built-in views
     # path('login/', auth_views.LoginView.as_view(
     #     template_name='registration/login.html',
@@ -22,4 +23,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/relationship_app/login/'), name='logout'),
     path('register/', views.register, name='register'),
+    path('admin-view/', views.admin_view, name='admin_view'),
+    path('librarian-view/', views.librarian_view, name='librarian_view'),
+    path('member-view/', views.member_view, name='member_view'),
 ]
