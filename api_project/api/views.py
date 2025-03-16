@@ -8,7 +8,7 @@ from .serializers import BookSerializer
 class BookViewSet(viewsets.ModelViewSet):
     """A viewset for viewing an deditiing book instances."""
 
-    queryset = Book.objects.all()
+    queryset = Books.objects.all()
     serializer_class = BookSerializer
 
 
